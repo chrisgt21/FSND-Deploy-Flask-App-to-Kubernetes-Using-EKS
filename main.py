@@ -11,9 +11,6 @@ import jwt
 from flask import Flask, jsonify, request, abort
 
 
-JWT_SECRET = os.environ.get('JWT_SECRET', 'abc123abc1234')
-LOG_LEVEL = os.environ.get('LOG_LEVEL', 'INFO')
-
 
 def _logger():
     '''
@@ -50,7 +47,7 @@ def require_jwt(function):
         token = str.replace(str(data), 'Bearer ', '')
         try:
             jwt.decode(token, JWT_SECRET, algorithms=['HS256'])
-        except: # pylint: disable=bare-except
+        except Exception: # pylint: disable=bare-except
             abort(401)
 
         return function(*args, **kws)
