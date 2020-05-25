@@ -16,9 +16,6 @@ load_dotenv('.env')
 JWT_SECRET = os.environ.get('JWT_SECRET')
 LOG_LEVEL = os.environ.get('LOG_LEVEL')
 
-print(JWT_SECRET)
-print(LOG_LEVEL)
-
 def _logger():
     '''
     Setup logger format, level, and handler.
