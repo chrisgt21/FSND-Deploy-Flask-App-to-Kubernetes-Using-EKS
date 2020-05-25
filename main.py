@@ -35,6 +35,7 @@ def _logger():
 
 LOG = _logger()
 LOG.debug("Starting with log level: %s" % LOG_LEVEL )
+
 APP = Flask(__name__)
 
 def require_jwt(function):
@@ -111,4 +112,5 @@ def _get_jwt(user_data):
     return jwt.encode(payload, JWT_SECRET, algorithm='HS256')
 
 if __name__ == '__main__':
-    APP.run(host='127.0.0.1', port=8080, debug=True)
+    #! /usr/bin/env python
+    APP.run(host="127.0.0.1", port=8000, debug=True)
